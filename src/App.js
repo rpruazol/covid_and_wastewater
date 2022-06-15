@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+export default function App() {
+  const [covidData, setCovidData] = React.useState({})
+
+  // 1. Get the data (fetch)
+  // 2. Save the data to state
+  
+	React.useEffect(() => {
+
+		const country = 'USA'
+		const options = {
+			method: 'GET',
+			headers: {
+			"Content-Type": "text/plain",
+			'X-RapidAPI-Key': process.env.REACT_APP_RapidAPIKey,
+			'X-RapidAPI-Host': process.env.REACT_APP_RapidAPIHost,
+			},
+		}
+		fetch(`https://covid-193.p.rapidapi.com/statistics?country=${country}`, options)
+		.then(res => res.json())
+		.then(data => setCovidData(data))
+	}, [])
+
+    return (
+      <div>
+        <pre>{JSON.stringify(covidData, null, 2)}</pre>
+      </div>
+    )
 }
-
-export default App;
