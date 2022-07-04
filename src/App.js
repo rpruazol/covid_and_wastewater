@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React from 'react'
+import Dropdown from './components/Dropdown'
+import {useState, useEffect} from 'react'
 
-function App() {
+export default function App() {
+
+  const[stateArray, getStates] = useState([])
+
+  useEffect(() => {
+    fetch('/states')
+    .then(response => response.json())
+    .then(data => getStates(data))
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Dropdown
+          states={stateArray}
+        />
     </div>
-  );
+  )
 }
-
-export default App;
