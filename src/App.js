@@ -3,7 +3,7 @@ import React from 'react'
 import Dropdown from './components/Dropdown'
 import {useState, useEffect} from 'react'
 
-function App() {
+export default function App() {
 
   const[stateArray, getStates] = useState([])
 
