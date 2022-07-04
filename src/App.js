@@ -1,6 +1,6 @@
-import './App.css';
+import './App.css'
 import React from 'react'
-import Dropdown from './components/Dropdown';
+import Dropdown from './components/Dropdown'
 import {useState, useEffect} from 'react'
 
 function App() {
