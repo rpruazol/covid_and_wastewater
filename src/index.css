@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.suggestions > li {
+  list-style: none;  
+}
+
+.active {
+  background-color: lightgray;
+}
+
+.autocomplete {
+  width: 25%;
+}
